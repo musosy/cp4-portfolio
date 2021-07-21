@@ -1,0 +1,13 @@
+.custom-navbar {
+    background-color: #8499B1;
+    font-size: x-large;
+}
+
+.custom-nav-link {
+    text-decoration: none;
+    color: black;
+}
+.custom-nav-link:hover {
+    font-weight: bold;
+    color: black;
+}
