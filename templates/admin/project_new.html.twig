@@ -1,0 +1,37 @@
+{% extends "admin_base.html.twig" %}
+{% block title %}
+    Nouveau projet
+{% endblock title %}
+
+{% block body %}
+<div class="container-fluid d-flex justify-content-center">
+    <div class="contributor-form p-5 text-center" style="max-width: 64rem;">
+        <h3>Ajouter un projet</h3>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'method': 'POST'}}) }}
+        <div class="mb-2">
+            <label for="name" class="form-label">Nom</label>
+            <div>
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        <div class="mb-2">
+            <label for="website" class="form-label">Description</label>
+            <div>
+                {{ form_widget(form.description) }}
+            </div>
+        </div>
+        <div class="mb-2">
+            <label for="contributors" class="form-label">Collaborateurs</label>
+            {{ form_widget(form.contributors) }}
+        </div>
+        <div class="mb-2">
+            <label for="technologies" class="form-label">Technologies</label>
+            {{ form_widget(form.technologies) }}
+        </div>
+        <div class="text-center mt-3">
+            <input type="submit" class="btn main-btn" value="Enregistrer">
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock body %}

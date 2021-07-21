@@ -1,0 +1,32 @@
+{% extends "admin_base.html.twig" %}
+
+{% block title %}Collaborateurs{% endblock title %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="p-5">
+        <h1 class=text-center>
+            Liste des collaborateurs
+        </h1>
+        <div class="text-center my-3">
+            <a class="btn main-btn" href="{{path('admin_contributor_new')}}">Nouveau collaborateur</a>
+        </div>
+        <div class="d-flex flex-wrap justify-content-evenly contributor-container">    
+            {% for contributor in contributors %}
+            <div class="contributor-card mx-3 my-3">
+                <h3>{{contributor.fullname}}</h3>
+                <div class="d-flex flex-column">
+                    <a class="my-1 {{contributor.website is empty ? 'disabled-link' : false}}" href="{{contributor.website is not empty ? contributor.website : '#'}}"><i class="fab fa-github"></i> Website</a>                
+                    <a class="my-1 {{contributor.linkedin is empty ? 'disabled-link' : false}}" href="{{contributor.linkedin is not empty ? contributor.linkedin : '#'}}"><i class="fab fa-linkedin"></i> Linkedin</a>
+                    <a class="my-1 {{contributor.github is empty ? 'disabled-link' : false}}" href="{{contributor.github is not empty ? contributor.github : '#'}}"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+                <div class="d-flex justify-content-evenly mt-2">
+                    <a class="btn secondary-btn" href="{{path('admin_contributor_edit', {contributor: contributor.id})}}">Modifer</button>
+                    <a class="btn secondary-btn" href="{{path('admin_contributor_delete', {contributor: contributor.id})}}">Supprimer</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

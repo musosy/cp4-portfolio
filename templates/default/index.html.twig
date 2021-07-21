@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Que fais-tu là ?{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="p-5 text-center">
+        <h1>Bienvenue sur le server</h1>
+        <h3 class="mt-3">À moins que tu sois admin, tu n'a rien à faire ici !</h3>
+        <div class="d-flex justify-content-evenly mt-5">
+            <a class="btn main-btn" href="http://localhost:3000">Je suis perdu ...</a>
+            <a class="btn main-btn" href="{{path('app_login')}}">Je suis admin !</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

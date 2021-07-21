@@ -1,0 +1,116 @@
+$purple: #7B6D8D;
+$dark-blue: #8499B1;
+$light-blue: #A5C4D4;
+$yellow: #E1CA96;
+$red: #E86252;
+
+$main-font: 'Lato', 'Montserrat', 'Roboto';
+$font-color: black;
+
+* {
+    color: $font-color;
+}
+body {
+    font-family: $main-font;
+    background-color: lightgray;
+}
+
+h1 {
+    font-size: 3em;
+}
+.navbar {
+    background-color: $dark-blue;
+}
+
+.main-btn {
+    background-color: $light-blue;
+    border: 3px solid $light-blue;
+}
+.main-btn:hover {
+    background-color: $dark-blue;
+    border: 3px solid $yellow;
+}
+
+.secondary-btn {
+    background-color: $dark-blue;
+    border: transparent;
+}
+.secondary-btn:hover {
+    background-color: $purple;
+    border: transparent;
+}
+
+
+/* CONTRIBUTORS */
+.contributor-card:nth-child(3n) {
+    background-color: $red;
+}
+.contributor-card:nth-child(3n + 1) {
+    background-color: $yellow;
+}
+.contributor-card:nth-child(3n + 2) {
+    background-color: $light-blue;
+}
+.contributor-card {
+    width: 20rem;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10%;
+    border: 2px black solid;
+}
+.contributor-card > div > a {
+    color: $font-color;
+    text-decoration: none;
+}
+.contributor-card > div > a:hover {
+    color: $dark-blue;
+}
+.contributor-form {
+    margin-top: 2rem;
+    border-radius: 10%;
+    background-color: $yellow;
+}
+.disabled-link {
+    opacity: .3 !important;
+}
+.disabled-link:hover {
+    color: $font-color !important;
+    cursor: default !important;
+}
+
+/* TECHNOLOGIES */
+.technologies-container {
+    border-radius: 10%;
+    padding: 1rem;
+    background-color: $yellow;
+}
+
+/* PROJECTS */
+.project-summary {
+    padding: 2rem;
+    background-color: $yellow;
+    border-radius: 10%;
+    max-width: 28rem;
+    min-width: 20rem;
+}
+.project-card {
+    margin-top: 2rem;
+    background-color: $yellow;
+    border-radius: 10%;
+    border: $red 1rem solid;
+}
+
+#project_contributors > input {
+    margin-top: .5rem;
+    margin-right: .3rem;
+}
+#project_technologies > input {
+    margin-top: .5rem;
+    margin-right: .3rem;
+}
+#project_contributors > label {
+    margin-right: 1rem;
+}
+#project_technologies > label {
+   margin-right: 1rem;
+}

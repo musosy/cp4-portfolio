@@ -1,0 +1,32 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Projets{% endblock title %}
+
+{% block body %}
+<div class="container-fluid p-5">
+    <h1 class="text-center">Projets</h1>
+    <div class="text-center">
+        <a href="{{path('admin_project_new')}}" class="btn main-btn">Nouveau projet</a>
+    </div>
+    <div class="projects-container mt-5 d-flex justify-content-evenly">
+        {% for project in projects %}
+            <div class="project-summary">
+                <h2 class="text-center"><b>{{project.name}}</b></h2>
+                <p>{{ project.description|slice(0, 50)}} ... </p>
+                <h4><u>Technologies</u></h4>
+                <div class="d-flex justify-content-evenly">
+                    {% for techno in project.technologies %}
+                    <p>{{techno.name}}</p>
+                    {% endfor %}
+                </div>
+                <h4><u>Actions</u></h4>
+                <div class="d-flex justify-content-evenly">
+                    <a class="btn secondary-btn" href="{{path('admin_project_show', {project: project.id})}}">Voir</a>
+                    <a class="btn secondary-btn" href="">Modifier</a>
+                    <a class="btn secondary-btn" href="">Supprimer</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
