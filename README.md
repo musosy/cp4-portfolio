@@ -14,9 +14,14 @@ bin/console d:f:l
 symfony server:start
 ```
 
-Puis dans un nouveau terminal, retournez à la racine du projet puis:
+Puis dans un nouveau terminal, retournez à la racine du projet et entrez les commandes suivantes:
 
 ```bash
 cd assets/client
 npm start
 ```
+
+## À propos
+### Technologies
+- BACKEND: Symfony / Doctrine / SQL
+- FRONTEND: Symfony / React
