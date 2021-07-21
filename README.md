@@ -38,7 +38,7 @@ npm start
 
 ## À propos
 ### Double utilisation de Symfony
-Dans ce repo, Symfony est à la fois utilisé de façon classique. Dans le cas présent pour la partie administrateur permettant d'update la base de données avec des templates quasiment statiques et un CRUD fonctionnel pour chaque entité.
+Dans ce repo, Symfony est à la fois utilisé de façon classique et comme API. Dans façon classique pour la partie administrateur permettant d'update la base de données avec des templates quasiment statiques et un CRUD fonctionnel pour chaque entité.
 
 Pour la partie 'client', Symfony est utilisé commme une API pour récupérer les données qui sont préalablement sérialisées à cause des références circulaires des relations ManyToMany (Doctrine).
 
