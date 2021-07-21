@@ -13,7 +13,7 @@ const ErrorHandler = (props) => {
                 setErrorMessage('Les ressources demandées n\'existent pas.');
                 break;
             case 'TypeError':
-                setErrorMessage('Le server ne répond pas.');
+                setErrorMessage('Le serveur ne répond pas.');
                 break;
             default:
                 setErrorMessage('Une erreur est survenue.');

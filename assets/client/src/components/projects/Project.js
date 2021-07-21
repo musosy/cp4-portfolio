@@ -23,7 +23,7 @@ const Project = (props) => {
             <p>{project.description}</p>
             <h3 className="mt-3">Technologies</h3>
             <div className="d-flex justify-content-evenly flex-wrap">
-            {project.technologies.map(tech => <p>{tech.name}</p>)}
+            {project.technologies.map(tech => <p key={"techno-" + tech.id} >{tech.name}</p>)}
             </div>
             <h3 className="mt-3">Collaborateurs</h3>
             <div className="d-flex justify-content-evenly flex-wrap">

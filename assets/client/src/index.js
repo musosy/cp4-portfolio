@@ -8,9 +8,9 @@ import Contact from './Contact';
 import Projects from './Projects';
 import Project from './components/projects/Project';
 import Contributor from './components/contributors/Contributor';
-import Navigation from './components/layouts/Navbar';
 import NotFound from './components/notFound/NotFound';
-
+import Navigation from './components/layouts/Navbar';
+import Footer from './components/layouts/Footer';
 const Routing = () => (
   <Router>
     <Navigation />
@@ -27,6 +27,7 @@ const Routing = () => (
         state: { from: window.location.pathname }
         }} />
     </Switch>
+    <Footer />
   </Router>
 );
 ReactDOM.render(
