@@ -19,13 +19,11 @@ class ProjectType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'attr' => [
-                    'class' => 'text-center',
                     'style' => 'width: 80%',
                 ]
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
-                    'class' => 'text-center',
                     'style' => 'width: 80%',
                 ]
             ])

@@ -52,6 +52,36 @@ class AdminController extends AbstractController
         ]);
     }
     /**
+     * @Route("/project/delete/{project}" , name="project_delete", methods={"GET", "POST"})
+     * @ParamConverter("project", class="App\Entity\Project", options={"mapping":{"project":"id"}})
+     */
+    public function projectDelete(Project $project): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($project);
+        $em->flush();
+        return $this->redirectToRoute('admin_index');
+    }
+    /**
+     * @Route("/project/edit/{project}", name="project_edit", methods={"GET", "POST"})
+     * @ParamConverter("project", class="App\Entity\Project", options={"mapping":{"project":"id"}})
+     */
+    public function projectEdit(Project $project, Request $request): Response
+    {
+        $form = $this->createForm(ProjectType::class, $project);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($project);
+            $em->flush();
+            return $this->redirectToRoute('admin_index');
+        }
+        return $this->render('admin/project_edit.html.twig', [
+            'form' => $form->createView(),
+            'project' => $project
+        ]);
+    }
+    /**
      * @Route("/project/{project}", name="project_show")
      * @ParamConverter("project", class="App\Entity\Project", options={"mapping":{"project":"id"}})
      */

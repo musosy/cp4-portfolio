@@ -8,22 +8,22 @@
     <div class="text-center">
         <a href="{{path('admin_project_new')}}" class="btn main-btn">Nouveau projet</a>
     </div>
-    <div class="projects-container mt-5 d-flex justify-content-evenly">
+    <div class="projects-container mt-5 d-flex justify-content-evenly flex-wrap">
         {% for project in projects %}
-            <div class="project-summary">
+            <div class="project-summary mb-3">
                 <h2 class="text-center"><b>{{project.name}}</b></h2>
                 <p>{{ project.description|slice(0, 50)}} ... </p>
                 <h4><u>Technologies</u></h4>
-                <div class="d-flex justify-content-evenly">
+                <div class="d-flex justify-content-evenly flex-wrap">
                     {% for techno in project.technologies %}
-                    <p>{{techno.name}}</p>
+                    <p class="mx-2">{{techno.name}}</p>
                     {% endfor %}
                 </div>
                 <h4><u>Actions</u></h4>
                 <div class="d-flex justify-content-evenly">
                     <a class="btn secondary-btn" href="{{path('admin_project_show', {project: project.id})}}">Voir</a>
-                    <a class="btn secondary-btn" href="">Modifier</a>
-                    <a class="btn secondary-btn" href="">Supprimer</a>
+                    <a class="btn secondary-btn" href="{{path('admin_project_edit', {project: project.id})}}">Modifier</a>
+                    <a class="btn secondary-btn" href="{{path('admin_project_delete', {project: project.id})}}">Supprimer</a>
                 </div>
             </div>
         {% endfor %}

@@ -9,15 +9,15 @@
         <h1 class=text-center>{{ project.name }}</h1>
         <p>{{project.description}}</p>
         <h3 class="text-center mt-5">Technologies</h3>
-        <div class="project-technologies d-flex justify-content-evenly mt-3">
+        <div class="project-technologies d-flex flex-wrap justify-content-evenly mt-3">
             {% for tech in project.technologies %}
                 <a href="{{path('admin_technologies')}}" class="btn secondary-btn">{{tech.name}}</a>
             {% endfor %}
         </div>
         <h3 class="text-center mt-5">Collaborateurs</h3>
-        <div class="project-technologies d-flex justify-content-evenly mt-3">
+        <div class="project-technologies d-flex flex-wrap justify-content-evenly mt-3">
             {% for cont in project.contributors %}
-                <a href="{{path('admin_contributors')}}" class="btn secondary-btn">{{cont.fullname}}</a>
+                <a href="{{path('admin_contributors')}}" class="my-1 mx-1 btn secondary-btn">{{cont.fullname}}</a>
             {% endfor %}
         </div>
     </div>

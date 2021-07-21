@@ -6,26 +6,26 @@
 {% block body %}
 <div class="container-fluid d-flex justify-content-center">
     <div class="contributor-form p-5 text-center" style="max-width: 64rem;">
-        <h3>Ajouter un projet</h3>
+        <h3><b>Ajouter un projet</b></h3>
         {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'method': 'POST'}}) }}
         <div class="mb-2">
-            <label for="name" class="form-label">Nom</label>
+            <label for="name" class="form-label"><b>Nom</b></label>
             <div>
                 {{ form_widget(form.name) }}
             </div>
         </div>
         <div class="mb-2">
-            <label for="website" class="form-label">Description</label>
+            <label for="website" class="form-label"><b>Description</b></label>
             <div>
                 {{ form_widget(form.description) }}
             </div>
         </div>
         <div class="mb-2">
-            <label for="contributors" class="form-label">Collaborateurs</label>
+            <label for="contributors" class="form-label"><b>Collaborateurs</b></label>
             {{ form_widget(form.contributors) }}
         </div>
         <div class="mb-2">
-            <label for="technologies" class="form-label">Technologies</label>
+            <label for="technologies" class="form-label"><b>Technologies</b></label>
             {{ form_widget(form.technologies) }}
         </div>
         <div class="text-center mt-3">
@@ -35,3 +35,52 @@
     </div>
 </div>
 {% endblock body %}
+{% block javascripts %}
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const proCont = document.querySelector('#project_contributors')
+            var contInput = [];
+            var contLabel = [];
+            for(let i = 0; i < proCont.childElementCount/2 ; i++) {
+                contInput.push(proCont.childNodes[2*i])
+                contLabel.push(proCont.childNodes[2*i+1])
+            }
+            proCont.innerHTML = '';
+            for(let i = 0; i < contInput.length; i++) {
+                //insert a div for each input
+                let toInsertDiv = document.createElement('div');
+                toInsertDiv.classList.add('d-flex');
+                toInsertDiv.classList.add('justify-content-evenly');
+                toInsertDiv.classList.add('mx-3')
+                proCont.appendChild(toInsertDiv)
+            }
+            //insert a label for each input in created div
+            for(let i = 0; i < contInput.length; i++) {
+                proCont.childNodes[i].appendChild(contInput[i])
+                proCont.childNodes[i].appendChild(contLabel[i])
+            }
+            
+            const proTech = document.querySelector('#project_technologies')
+            var techInput = [];
+            var techLabel = [];
+            for(let i = 0; i < proTech.childElementCount/2 ; i++) {
+                techInput.push(proTech.childNodes[2*i])
+                techLabel.push(proTech.childNodes[2*i+1])
+            }
+            proTech.innerHTML = '';
+            for(let i = 0; i < techInput.length; i++) {
+                //insert a div for each input
+                let toInsertDiv = document.createElement('div');
+                toInsertDiv.classList.add('d-flex');
+                toInsertDiv.classList.add('justify-content-evenly');
+                toInsertDiv.classList.add('mx-3')
+                proTech.appendChild(toInsertDiv)
+            }
+            //insert a label for each input in created div
+            for(let i = 0; i < techInput.length; i++) {
+                proTech.childNodes[i].appendChild(techInput[i])
+                proTech.childNodes[i].appendChild(techLabel[i])
+            }
+        })
+    </script>
+{% endblock javascripts %}
