@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Loader from '../loader/Loader';
+import ErrorHandler from '../errorHandler/ErrorHandler';
+
 const Contributor = (props) => {
-    const [contributor, setContributor] = useState(null)
+    const [contributor, setContributor] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
     useEffect(() => {
         fetch(`http://localhost:8000/api/contributors/show/${props.match.params.id}`)
             .then(response => response.json())
             .then(json => setContributor(json))
-            .catch(err => console.log(err));
+            .then(() => setIsLoading(false))
+            .catch(err => setError(err));
     } , [props.match.params.id]);
-    if (contributor === null) return <div>Chargement du collaborateur ...</div>;
+    if (error) return <ErrorHandler error={error} />;
+    if (isLoading) return <Loader />;
     return (
         <div className="contributor">
             <h1>{contributor.fullname}</h1>

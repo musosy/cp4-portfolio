@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Link } from "react-router-dom";
+import Loader from './components/loader/Loader';
+import ErrorHandler from './components/errorHandler/ErrorHandler';
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
+    const [isLoading, setIsloading] = useState(true);
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         fetch('http://localhost:8000/api/projects')
             .then(response => response.json())
             .then(data => setProjects(data))
-            .catch(err => console.log(err));
+            .then(() => setIsloading(false))
+            .catch(err => setError(err));
             
     }, []);
-    if (projects.length === 0) return <div>Chargement des projets...</div>;
+    if (error) return <ErrorHandler error={error} />;
+    if (isLoading) return <Loader />;
     return (
         <Container fluid className="p-5">
             <h1 className="text-center"><b>Mes projets</b></h1>
