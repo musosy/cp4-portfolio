@@ -2,9 +2,10 @@
 
 namespace App\Service;
 
-class ProjectFormatingService {
+class FormatingService {
     public function formatProject($project) {
         $formatedProject = [
+            'id' => $project->getId(),
             'name' => $project->getName(),
             'description' => $project->getDescription(),
             'contibutors' => [],
@@ -14,6 +15,7 @@ class ProjectFormatingService {
         $technologies = $project->getTechnologies();
         foreach ($contributors as $contributor) {
             $formatedProject['contributors'][] = [
+                'id' => $contributor->getId(),
                 'fullname' => $contributor->getFullname(),
                 'website' => $contributor->getWebsite(),
                 'linkedin' => $contributor->getLinkedin(),
@@ -27,5 +29,25 @@ class ProjectFormatingService {
             ];
         }
         return $formatedProject;
+    }
+    
+    //format contributor
+    public function formatContributor($contributor) {
+        $formatedContributor = [
+            'id' => $contributor->getId(),
+            'fullname' => $contributor->getFullname(),
+            'website' => $contributor->getWebsite(),
+            'linkedin' => $contributor->getLinkedin(),
+            'github' => $contributor->getGithub(),
+            'projects' => [],
+        ];
+        $projects = $contributor->getProjects();
+        foreach ($projects as $project) {
+            $formatedContributor['projects'][] = [
+                'id' => $project->getId(),
+                'name' => $project->getName()
+            ];
+        }
+        return $formatedContributor;
     }
 }

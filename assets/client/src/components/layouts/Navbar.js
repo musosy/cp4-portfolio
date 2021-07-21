@@ -16,7 +16,7 @@ const Navigation = () => {
                         <Link className="mx-3 custom-nav-link" to="/">Accueil</Link>
                         <Link className="mx-3 custom-nav-link" to="/projects">Projets</Link>
                         <Link className="mx-3 custom-nav-link" to="/contact">Contact</Link>
-                        <Link className="mx-3 custom-nav-link" to="/about">À propos</Link>
+                        <Link className="mx-3 custom-nav-link" to="/about">À propos</Link> 
                     </Nav>
                     <Nav >
                         <Nav.Link href="http://localhost:8000">Admin</Nav.Link>
