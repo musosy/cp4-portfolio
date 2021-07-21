@@ -7,19 +7,24 @@ Bienvenu sur mon portfolio. Vous trouverez ici les prémices du projet final. Ce
 Suivez les instructions suivantes pour démarrer correctement le repo: 
 
 ```bash
-bin/console d:d:c
+php bin/console d:d:c
 ```
 ```bash
-bin/console m:migration
+php bin/console m:migration
 ```
 ```bash
-bin/console doctrine:migration:migrates
+php bin/console doctrine:migration:migrates
 ```
 ```bash
-bin/console d:f:l
+php bin/console d:f:l
 ```
 ```bash
 symfony server:start
+```
+
+Assurez d'avoir dans le dossier assets/clients un fichier .env contenant la ligne suivante: 
+```bash
+SKIP_PREFLIGHT_CHECK=true
 ```
 
 Puis dans un nouveau terminal, retournez à la racine du projet et entrez les commandes suivantes:
@@ -32,6 +37,10 @@ npm start
 ```
 
 ## À propos
-### Technologies
-- BACKEND: Symfony / Doctrine / SQL
-- FRONTEND: Symfony / React
+### Double utilisation de Symfony
+Dans ce repo, Symfony est à la fois utilisé de façon classique. Dans le cas présent pour la partie administrateur permettant d'update la base de données avec des templates quasiment statiques et un CRUD fonctionnel pour chaque entité.
+
+Pour la partie 'client', Symfony est utilisé commme une API pour récupérer les données qui sont préalablement sérialisées à cause des références circulaires des relations ManyToMany (Doctrine).
+
+### Client React
+Le framework React est utilisé pour la partie 'client' qui sert uniquement à récupérer les données. Les components sont uniquement procéduraux (functional component) et utilisent 2 Hooks (useState, useEffect) ainsi que les components de 'react-bootstrap'.
