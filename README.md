@@ -7,6 +7,9 @@ Bienvenu sur mon portfolio. Vous trouverez ici les prémices du projet final. Ce
 Suivez les instructions suivantes pour démarrer correctement le repo: 
 
 ```bash
+composer install
+```
+```bash
 php bin/console d:d:c
 ```
 ```bash
