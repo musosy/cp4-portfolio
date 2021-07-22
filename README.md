@@ -3,9 +3,11 @@
 Bienvenu sur mon portfolio. Vous trouverez ici les prémices du projet final. Cette version utilise Symfony comme framework pour l'administration mais aussi en tant qu'API avec un front-end en React.
 
 ## Installation
+Dans un dossier de votre choix, ouvrez votre terminal et copiez les commandes suivantes: 
 
-Suivez les instructions suivantes pour démarrer correctement le repo: 
-
+```bash
+git clone https://github.com/musosy/cp4-portfolio.git
+```
 ```bash
 composer install
 ```
@@ -38,6 +40,9 @@ cd assets/client
 ```bash
 npm start
 ```
+
+## Utilisation
+Ce projet possède deux server: un client (localhost:3000) et un back (localhost:8000) aussi utilisé pour l'administration. Il est possible de passer d'un server à l'autre très facilement dans les renders à condition d'avoir bien démarré les servers comme indiqué ci-dessus.
 
 ## À propos
 ### Double utilisation de Symfony
