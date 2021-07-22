@@ -11,7 +11,7 @@
         <h3 class="text-center mt-5">Technologies</h3>
         <div class="project-technologies d-flex flex-wrap justify-content-evenly mt-3">
             {% for tech in project.technologies %}
-                <a href="{{path('admin_technologies')}}" class="btn secondary-btn">{{tech.name}}</a>
+                <a href="{{path('admin_technologies')}}" class="btn secondary-btn my-1 mx-1">{{tech.name}}</a>
             {% endfor %}
         </div>
         <h3 class="text-center mt-5">Collaborateurs</h3>
@@ -21,9 +21,15 @@
             {% endfor %}
         </div>
     </div>
-<div class="text-center my-5">
-    <a href="{{path('admin_index')}}" class="btn main-btn">Retour à la liste des projets</a>
-</div>
+    <h3 class="text-center mt-3">Illustatrions du projet:</h3>
+    <div class="d-flex flex-column align-items-center">
+        {% for img in project.images %}
+            <img class="my-3 prj-img" src="{{asset('build/images/' ~ img.url)}}" alt="{{img.url}}">
+        {% endfor %}
+    </div>
+    <div class="text-center my-5">
+        <a href="{{path('admin_index')}}" class="btn main-btn">Retour à la liste des projets</a>
+    </div>
 </div>
 
 {% endblock body %}

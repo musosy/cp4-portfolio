@@ -233,6 +233,8 @@ class AdminController extends AbstractController
             if ($uploadedImg) {
                 $newFileName = pathinfo((string) $uploadedImg->getClientOriginalName(), PATHINFO_FILENAME);
                 $newFileName = str_replace(' ', '_', $newFileName);
+                $newFileName = strtolower($form->get('project')->getData()->getName()) . '_' . $newFileName;
+
                 try {
                     $uploadedImg->move(
                         $this->getParameter('upload_dir_back'),
@@ -264,6 +266,10 @@ class AdminController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($image);
         $entityManager->flush();
+        //remove the file from the folder
+        $path = $this->getParameter('upload_dir_back') . '/' . $image->getUrl();
+        unlink($path);
+        
         return $this->redirectToRoute('admin_images');
     }
 
