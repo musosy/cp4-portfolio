@@ -1,0 +1,27 @@
+
+.project-small-card {
+    background-color: #E1CA96;
+    padding: 1rem;
+    border-radius: 10%;
+}
+
+.custom-link {
+    background-color: #A5C4D4;
+    border: 3px solid #A5C4D4;
+}
+.custom-link:hover {
+    background-color: #8499B1;
+    border: 3px solid #7B6D8D;
+}
+
+.project {
+    margin-top: 3rem;
+    background-color: #E1CA96;
+    padding: 2rem;
+    border-radius: 10%;
+    border: #E86252 1rem solid;
+}
+
+.project > div > p, a {
+    font-size: x-large;
+}

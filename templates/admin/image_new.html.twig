@@ -1,0 +1,27 @@
+{% extends "admin_base.html.twig" %}
+{% block title %}Nouvelle image{% endblock title %}
+{% block body %}
+<div class="container-fluid d-flex justify-content-center">
+    <div class="contributor-form p-5" style="max-width: 64rem;">
+        <h3>Ajouter un collaborateur</h3>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'method': 'POST'}}) }}
+        {{ form_errors(form) }}
+        <div class="mb-2">
+            <label for="fullname" class="form-label">Fichier</label>
+            <div>
+                {{ form_widget(form.url) }}
+            </div>
+        </div>
+        <div class="mb-2">
+            <label for="website" class="form-label">Project</label>
+            <div>
+                {{ form_widget(form.project) }}
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <input type="submit" class="btn main-btn" value="Enregistrer">
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock body %}

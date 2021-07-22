@@ -19,15 +19,15 @@ const Project = (props) => {
     if (isLoading) return <Loader />;
     else return (
         <div className="project">
-            <h1>{project.name}</h1>
+            <h1 className="text-center"><b>{project.name}</b></h1>
             <p>{project.description}</p>
-            <h3 className="mt-3">Technologies</h3>
+            <h2 className="mt-5">Technologies</h2>
             <div className="d-flex justify-content-evenly flex-wrap">
             {project.technologies.map(tech => <p key={"techno-" + tech.id} >{tech.name}</p>)}
             </div>
-            <h3 className="mt-3">Collaborateurs</h3>
+            <h2 className="mt-5">Collaborateurs</h2>
             <div className="d-flex justify-content-evenly flex-wrap">
-            {project.contributors.map(cont => <Link key={'contributor-' + cont.id} to={'/contributor/' + cont.id}>{cont.fullname}</Link>)}
+            {project.contributors.map(cont => <Link className="custom-link btn" key={'contributor-' + cont.id} to={'/contributor/' + cont.id}>{cont.fullname}</Link>)}
             </div>
         </div>
 

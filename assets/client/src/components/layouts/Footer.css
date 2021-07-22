@@ -1,0 +1,16 @@
+.footer {
+    background-color: #8499B1;
+    height: 20rem;
+    margin-top: 2rem;
+}
+
+.custom-link {
+    width: 8rem;
+    background-color: #A5C4D4;
+    border: 3px solid #A5C4D4;
+}
+.custom-link:hover {
+    width: 8rem;
+    background-color: #8499B1;
+    border: 3px solid #7B6D8D;
+}

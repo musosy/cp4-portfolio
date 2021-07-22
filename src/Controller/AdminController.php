@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\ImageType;
+
 use App\Entity\Contributor;
 use App\Entity\Image;
 use App\Entity\Project;
@@ -217,5 +219,42 @@ class AdminController extends AbstractController
             'images' => $images,
         ]);
     }
+    //upload a file and save the path in the database
+    /**
+     * @Route("/image/new", name="image_new", methods={"POST", "GET"})
+     */
+    public function imageNew(Request $request): Response
+    {
+        $image = new Image();
+        $form = $this->createForm(ImageType::class, $image);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $tmpFile = $form->get('url')->getData();
+            if ($tmpFile) {
+                $newFileName = pathinfo((string) $tmpFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFileName = '/public/uploads/images/' . str_replace(' ', '_', $newFileName);
+                try {
+                    $tmpFile->move(
+                        $this->getParameter('upload_dir_back'),
+                        $newFileName
+                    );
+                } catch (\Exception $e) {
+                    return $this->redirectToRoute('admin_image_new', [
+                        'error' => $e->getMessage(),
+                        'form' => $form->createView()
+                    ]);
+                }
+                $image->setUrl($newFileName);
+                $this->getDoctrine()->getManager()->persist($image);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('admin_images');
+            }
+        }
+        return $this->render('admin/image_new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+        
+
     // END IMAGES ROUTES //
 }

@@ -1,2 +1,12 @@
 {% extends "admin_base.html.twig" %}
 {% block title %}Images{% endblock title %}
+{% block body %}
+<div class="container-fluid">
+    <h1 class="text-center">Images</h1>
+    <a href="{{path('admin_image_new')}}">Nouvelle image</a>
+
+    {% for img in images %}
+        <img src="../{{ img.url }}" class="img-thumbnail" alt="test">
+    {% endfor %}
+</div>
+{% endblock body %}

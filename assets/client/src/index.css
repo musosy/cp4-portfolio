@@ -1,8 +1,19 @@
 * {
     font-family: 'Lato', 'Montserrat', 'Roboto';
     color: black;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: lightgray;
+}
+  
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.content {
+    flex-grow: 1;
 }
