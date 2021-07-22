@@ -45,7 +45,7 @@ npm start
 ```
 
 ## Utilisation
-Ce projet possède deux server: un client (localhost:3000) et un back (localhost:8000) aussi utilisé pour l'administration. Il est possible de passer d'un server à l'autre très facilement dans les renders à condition d'avoir bien démarré les servers comme indiqué ci-dessus.
+Ce projet possède deux servers: un client (localhost:3000) et un back (localhost:8000) aussi utilisé pour l'administration. Il est possible de passer d'un server à l'autre très facilement dans les renders à condition d'avoir bien démarré les servers comme indiqué ci-dessus.
 
 ## À propos
 ### Double utilisation de Symfony

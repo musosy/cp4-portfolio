@@ -1,12 +1,20 @@
 {% extends "admin_base.html.twig" %}
 {% block title %}Images{% endblock title %}
 {% block body %}
-<div class="container-fluid">
+<div class="container-fluid p-5">
     <h1 class="text-center">Images</h1>
-    <a href="{{path('admin_image_new')}}">Nouvelle image</a>
+    <div class="text-center mt-3">
+        <a class="btn main-btn" href="{{path('admin_image_new')}}">Nouvelle image</a>
+    </div>
 
     {% for img in images %}
-        <img src="../{{ img.url }}" class="img-thumbnail" alt="test">
+        <div class="my-2">
+            <p>{{img.project.name}}</p>
+            <img src="{{asset('build/images/' ~ img.url)}}" class="img-thumbnail" alt="test">
+            <div class="text-center">
+                <a href="{{path('admin_image_delete', {image: img.id})}}" class="btn secondary-btn mt-2">Supprimer</a>
+            </div>
+        </div>
     {% endfor %}
 </div>
 {% endblock body %}

@@ -229,12 +229,12 @@ class AdminController extends AbstractController
         $form = $this->createForm(ImageType::class, $image);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $tmpFile = $form->get('url')->getData();
-            if ($tmpFile) {
-                $newFileName = pathinfo((string) $tmpFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $newFileName = '/public/uploads/images/' . str_replace(' ', '_', $newFileName);
+            $uploadedImg = $form->get('url')->getData();
+            if ($uploadedImg) {
+                $newFileName = pathinfo((string) $uploadedImg->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFileName = str_replace(' ', '_', $newFileName);
                 try {
-                    $tmpFile->move(
+                    $uploadedImg->move(
                         $this->getParameter('upload_dir_back'),
                         $newFileName
                     );
@@ -252,9 +252,20 @@ class AdminController extends AbstractController
         }
         return $this->render('admin/image_new.html.twig', [
             'form' => $form->createView(),
-        ]);
+        ]); 
     }
         
+    /**
+     * @Route("/image/delete/{image}", name="image_delete" )
+     * @ParamConverter("image", class="App\Entity\Image", options={"mapping":{"image":"id"}})
+     */
+    public function imageDelete(Image $image): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($image);
+        $entityManager->flush();
+        return $this->redirectToRoute('admin_images');
+    }
 
     // END IMAGES ROUTES //
 }
