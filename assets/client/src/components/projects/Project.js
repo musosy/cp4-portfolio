@@ -7,14 +7,28 @@ const Project = (props) => {
     const [project, setProject] = useState(null);
     const [isLoading, setIsloading] = useState(true);
     const [error, setError] = useState(null);
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/projects/show/${props.match.params.id}`)
             .then(response => response.json())
             .then(json => setProject(json))
             .then(() => setIsloading(false))
-            .catch(err => setError(err));
+            .catch(err => setError(err))
+
     } , [props.match.params.id]);
+
+    useEffect(() => {
+        //fetch images once the project is loaded
+        if (project && !isLoading) {
+            fetch('http://localhost:8000/api/image/' + project.images[0].id)
+                .then(response => response.blob())
+                .then(blob => setImages([URL.createObjectURL(blob)]))
+                .catch(err => console.log(err))
+            
+        }
+    }, [project, isLoading]);
+    console.log(images);
     if (error) return <ErrorHandler error={error} />;
     if (isLoading) return <Loader />;
     else return (

@@ -32,7 +32,7 @@ class FormatingService {
         }
         foreach ($images as $image) {
             $formatedProject['images'][] = [
-                'url' => '' . $image->getUrl(),
+                'id' => $image->getId(),
             ];
         }
         return $formatedProject;

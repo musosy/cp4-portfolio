@@ -68,5 +68,23 @@ class ApiController extends AbstractController
         $res = $this->mailingService->sendMail(json_decode($request->getContent())->contact);
         return $this->json($res);
     }
+
+    /**
+     * @Route("/image/{id}", name="image", methods={"GET"})
+     */
+    public function image(Request $request, $id): Response
+    {
+        //send the image as a binary file for the browser to display
+        $image = $this->getDoctrine()
+            ->getRepository(Project::class)
+            ->find($id)
+        ;
+        $path = 'build/images/' . $image->getImagePath();
+        $response = new Response();
+        $response->headers->set('Content-Type', 'image/jpeg');
+        $response->headers->set('Content-Disposition', 'attachment; filename="'.basename($path).'"');
+        $response->setContent(file_get_contents($path));
+        return $response;
+    }
 }
 
