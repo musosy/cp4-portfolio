@@ -27,10 +27,9 @@ const Project = (props) => {
             </div>
             <h2 className="mt-5">Collaborateurs</h2>
             <div className="d-flex justify-content-evenly flex-wrap">
-            {project.contributors.map(cont => <Link className="custom-link btn mx-2 my-2" key={'contributor-' + cont.id} to={'/contributor/' + cont.id}>{cont.fullname}</Link>)}
+                {project.contributors.map(cont => <Link className="custom-link btn mx-2 my-2" key={'contributor-' + cont.id} to={'/contributor/' + cont.id}>{cont.fullname}</Link>)}
             </div>
         </div>
-
     )
 }
 export default Project;

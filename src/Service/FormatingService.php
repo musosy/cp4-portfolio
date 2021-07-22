@@ -9,10 +9,12 @@ class FormatingService {
             'name' => $project->getName(),
             'description' => $project->getDescription(),
             'contibutors' => [],
-            'technologies' => []
+            'technologies' => [],
+            'images' => [],
         ];
         $contributors = $project->getContributors();
         $technologies = $project->getTechnologies();
+        $images = $project->getImages();
         foreach ($contributors as $contributor) {
             $formatedProject['contributors'][] = [
                 'id' => $contributor->getId(),
@@ -26,6 +28,11 @@ class FormatingService {
             $formatedProject['technologies'][] = [
                 'id' => $technology->getId(),
                 'name' => $technology->getName(),
+            ];
+        }
+        foreach ($images as $image) {
+            $formatedProject['images'][] = [
+                'url' => '' . $image->getUrl(),
             ];
         }
         return $formatedProject;
