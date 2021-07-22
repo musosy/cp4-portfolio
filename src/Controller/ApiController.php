@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contributor;
 use App\Entity\Project;
 use App\Service\FormatingService;
+use App\Service\MailingService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,9 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ApiController extends AbstractController
 {
     private $formatingService;
-    public function __construct(FormatingService $formatingService)
+    private $mailingService;
+    public function __construct(FormatingService $formatingService, MailingService $mailingService)
     {
         $this->formatingService = $formatingService;
+        $this->mailingService = $mailingService;
     }
     /**
      * @Route("/projects", name="projects", methods={"GET"})
@@ -62,8 +65,8 @@ class ApiController extends AbstractController
      */
     public function contact(Request $request): Response
     {
-        $data = json_decode($request->getContent())->contact;
-        return $this->json($data);
+        $res = $this->mailingService->sendMail(json_decode($request->getContent())->contact);
+        return $this->json($res);
     }
 }
 

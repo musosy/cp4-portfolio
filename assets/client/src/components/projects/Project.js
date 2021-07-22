@@ -23,11 +23,11 @@ const Project = (props) => {
             <p>{project.description}</p>
             <h2 className="mt-5">Technologies</h2>
             <div className="d-flex justify-content-evenly flex-wrap">
-            {project.technologies.map(tech => <p key={"techno-" + tech.id} >{tech.name}</p>)}
+            {project.technologies.map(tech => <p key={"techno-" + tech.id} className="mx-2">{tech.name}</p>)}
             </div>
             <h2 className="mt-5">Collaborateurs</h2>
             <div className="d-flex justify-content-evenly flex-wrap">
-            {project.contributors.map(cont => <Link className="custom-link btn" key={'contributor-' + cont.id} to={'/contributor/' + cont.id}>{cont.fullname}</Link>)}
+            {project.contributors.map(cont => <Link className="custom-link btn mx-2 my-2" key={'contributor-' + cont.id} to={'/contributor/' + cont.id}>{cont.fullname}</Link>)}
             </div>
         </div>
 

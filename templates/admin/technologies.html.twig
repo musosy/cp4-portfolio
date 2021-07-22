@@ -14,12 +14,14 @@
         </div>
         <div class="d-flex flex-column mt-5 technologies-container">    
             {% for technology in technologies %}
-            <div class="technology-card mx-3 my-3 row text-center">
-                <h3 class="col mx-2">{{technology.name}}</h3>
-                <button type="button" class="btn secondary-btn col mx-2" data-bs-toggle="modal" data-bs-target="#techno-{{technology.id}}-modal">
-                    Modifier
-                </button>
-                <a class="btn secondary-btn col mx-2" href="{{path('admin_technology_delete', {technology: technology.id})}}">Supprimer</a>
+            <div class="technology-card mx-3 my-3 d-flex flex-wrap justify-content-evenly">
+                <h3 class="mx-2">{{technology.name}}</h3>
+                <div class="d-flex flex-wrap justify-content-evenly">
+                    <button type="button" class="btn secondary-btn mx-2" data-bs-toggle="modal" data-bs-target="#techno-{{technology.id}}-modal">
+                        Modifier
+                    </button>
+                    <a class="btn secondary-btn mx-2" href="{{path('admin_technology_delete', {technology: technology.id})}}">Supprimer</a>
+                </div>
             </div>
             <div class="modal fade" id="techno-{{technology.id}}-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">

@@ -21,7 +21,7 @@ const Contributor = (props) => {
     if (error) return <ErrorHandler error={error} />;
     if (isLoading) return <Loader />;
     return (
-        <Container fluid className="d-flex flex-column align-items-center">
+        <Container key={"contributor-" + contributor.id} fluid className="d-flex flex-column align-items-center">
             <div className="contributor text-center">
                 <h1>{contributor.fullname}</h1>
                 <div className="d-flex flex-column">

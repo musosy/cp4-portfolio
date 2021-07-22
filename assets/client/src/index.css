@@ -26,3 +26,26 @@ body {
 .error-message {
     color: red;
 }
+
+.custom-link {
+    background-color: #A5C4D4;
+    border: 3px solid #A5C4D4;
+}
+.custom-link:hover {
+    background-color: #8499B1;
+    border: 3px solid #7B6D8D;
+}
+
+.text-link {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
+.text-link:hover {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);  
+    -webkit-background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text; 
+    background-clip: text;
+    color: transparent;
+}

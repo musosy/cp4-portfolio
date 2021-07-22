@@ -2,7 +2,7 @@
 .project-small-card {
     background-color: #E1CA96;
     padding: 1rem;
-    border-radius: 10%;
+    border-radius: 2rem;
 }
 
 .custom-link {
@@ -18,7 +18,7 @@
     margin-top: 3rem;
     background-color: #E1CA96;
     padding: 2rem;
-    border-radius: 10%;
+    border-radius: 2rem;
     border: #E86252 1rem solid;
 }
 

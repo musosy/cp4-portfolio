@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import './index.css';
+import {Redirect} from 'react-router-dom';
 
 const Contact = () => {
     const [contact, setContact] = useState({
@@ -14,7 +15,7 @@ const Contact = () => {
         message: 'Message requis',
     });
     const [submitted, setSubmitted] = useState(false);
-    
+    const [success, setSuccess] =  useState(false);
     const onSubmit = async (e) => {
         e.preventDefault();
         setSubmitted(true);
@@ -32,7 +33,7 @@ const Contact = () => {
             })
             .then(response => response.json())
             .then(json => console.log(json))
-            .then(() => setSubmitted(false))
+            .then(() => setSuccess(true))
             .catch(err => console.error(err));
         }
     }
@@ -60,6 +61,7 @@ const Contact = () => {
             setError({...error, message: 'Message requis'});
         }
     }
+    if (success) return <Redirect to="/" />
     return (
         <Container fluid className="p-5">
             <h1 className="text-center">Contact</h1>
