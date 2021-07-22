@@ -56,5 +56,14 @@ class ApiController extends AbstractController
         ;
         return $this->json($this->formatingService->formatContributor($contributor));
     }
+
+    /**
+     * @Route("/contact", name="contact", methods={"POST"})
+     */
+    public function contact(Request $request): Response
+    {
+        $data = json_decode($request->getContent())->contact;
+        return $this->json($data);
+    }
 }
 
