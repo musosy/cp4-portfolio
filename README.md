@@ -38,6 +38,9 @@ Puis dans un nouveau terminal, retournez à la racine du projet et entrez les co
 cd assets/client
 ```
 ```bash
+npm install
+```
+```bash
 npm start
 ```
 
